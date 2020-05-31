@@ -1,6 +1,5 @@
 function [ out ] = function(pi_est, horiz, i_ini, pop_ini)
-% -----------------------------------------------------------------------------
-% Calibra os parâmetros relativos a função de transmição
+% Calibra os para�metros relativos a funcao de transmissao
 %
 % Autor: Gustavo Vital, com base em Rabelo/Trabandt
 % Data: 28/04/2020
