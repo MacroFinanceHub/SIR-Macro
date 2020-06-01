@@ -66,12 +66,40 @@ end
 %%
 % Calculos do estado estacionário
 
-theta=1/n_target^2;     %calculate disutility of labor parameter theta
-                        %so that pre-infection steady state labor is equal to
-                        %desired target (using n=(1/theta)^(1/2) pre-infection 
-                        %steady state equation)
-A=inc_target/n_target;  %calculate parameter A such that income is equal to
-                        %desired target, c=inc_target=A*n_target
+theta=1/n_target^2;     % Calcula a desutilidade marginal do trabalho 
+                        % parametro theta, então no estagio pre infecção
+                        % esse parametro é dado pela função objetivo n =
+                        % (1/theta)^(1/2)                       
+A=inc_target/n_target;  % Calcula o parametro A, tl que a renda é igual a 
+                        % função c = inc_target=A*n_target
                         
-                        
+%%
+% Estado estacionario
+
+nrss=(1/theta)^(1/2);           % N de pessoas recuperadas
+crss=A*nrss;                    % C de pessoas recuperadas
+urss=log(crss)-theta/2*nrss^2;  % U(c,n) de pessoas recuperadas
+Urss=1/(1-betta)*urss;          % pv U da vida de pessoas recuperadas
+UrssConsUnits=Urss*crss;        % pv "custo" da utilidade da vida
+niss=(1/theta)^(1/2);           % N infectadas
+ciss=phii*A*niss;               % C infectadas
+uiss=log(ciss)-theta/2*niss^2;  % U(c,n) infectadas
+Uiss=1/(1-(1-deltac)*betta*(1-pir-pid))*(uiss...
++(1-deltac)*betta*pir*Urss+deltac*betta*Urss);  % U da vida de pessoas 
+                                                % infectadas
+                
+%%
+% utilidade de recuperados TEM que ser maior que de infectados
+if Uiss-Urss>0
+    error(['Error: parametrização implica que Uiss>Urss: ', ...
+        num2str(Uiss-Urss)])
+end
+        
+%%
+% Calibragem dos pis da função
+
+calibrar_parametros
+
+
+
                         
