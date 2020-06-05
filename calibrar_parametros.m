@@ -1,12 +1,10 @@
-function [ err,pis1,pis2,pis3,RnotSIR,I,S,D,R,T ] = function(pis_guess,HH,i_ini,pop_ini,pir,pid,pis1_shr_target,pis2_shr_target,RplusD_target,phii,C,N,scale1,scale2)
+function [ err,pis1,pis2,pis3,RnotSIR,I,S,D,R,T ] = calibrar_parametros(pis_guess,HH,i_ini,pop_ini,pir,pid,pis1_shr_target,pis2_shr_target,RplusD_target,phii,C,N,scale1,scale2)
 % Calibra os parametros relativos a funcao de transmissao
 %
 % Autor: Gustavo Vital, com base em Rabelo/Trabandt
 % Data: 28/04/2020
 %
 % ------------------------------------------------------------------------
-
-
 %%
 % Condições iniciais
 pis1=pis_guess(1)/scale1;

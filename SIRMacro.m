@@ -98,8 +98,4 @@ end
 %%
 % Calibragem dos pis da função
 
-calibrar_parametros
-
-
-
-                        
+go_calibrar_parametros;                      
